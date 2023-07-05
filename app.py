@@ -1,11 +1,13 @@
 import streamlit as st
 from newspaper import Article
 from textblob import TextBlob
+import nltk 
 
 def summarize():
     url = st.text_input("Enter URL")
     if st.button("Submit"):
         # Download, parse, and extract keywords from the article
+        nltk.download('punkt')
         article = Article(url)
         article.download()
         article.parse()
